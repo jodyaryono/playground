@@ -4,10 +4,11 @@ class Orders_model extends CI_Model
 {
     function tampil()
     {
-        return $this->db->query('SELECT * FROM orders');
-        //SELECT * FROM arsip
+        return $this->db->query('
+        SELECT o.id_order,o.tgl_order,o.customer,ifnull(sum(od.harga*od.qty),0)total 
+        FROM orders o left join order_details od on o.id_order=od.id_order group by o.id_order,o.tgl_order,o.customer
+        ');
     }
-
     function get_header($id)
     {
         return $this->db->query('SELECT * FROM orders Where id_order=' . $id);

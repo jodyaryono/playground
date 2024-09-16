@@ -23,8 +23,17 @@
 
                     <h3>Data order</h3>
                     <p>
-                        <a href="<?php echo base_url(); ?>orders/tambah"><button class="btn btn-primary">Tambah
-                                Data</button></a>
+                        <a href="<?php echo base_url(); ?>orders/tambah">
+                            <button class="btn btn-primary">
+                                <i class="fas fa-plus"></i> Tambah Data
+                            </button>
+                        </a>
+                        <a href="<?php echo base_url(); ?>orders/cetak">
+                            <button class="btn btn-primary">
+                                <i class="fas fa-print"></i> Cetak
+                            </button>
+                        </a>
+
                     </p>
                     <table class="table table-hover">
                         <thead>
@@ -32,6 +41,7 @@
                                 <th width="20px">No</th>
                                 <th>Tanggal</th>
                                 <th>Customer</th>
+                                <th>Total</th>
                                 <th width="200px">Aksi</th>
                             </tr>
                         </thead>
@@ -40,19 +50,20 @@
                             $no = 1;
                             foreach ($order->result_array() as $dp) {
                             ?>
-                            <tr>
-                                <td><?php echo $no; ?></td>
-                                <td><?php echo $dp['tgl_order']; ?></td>
-                                <td><?php echo $dp['customer']; ?></td>
-                                <td>
-                                    <a href="<?php echo base_url(); ?>order/edit/<?php echo $dp['id_order']; ?>"
-                                        title="Ubah"><button class="btn btn-info">Ubah</button></a>
+                                <tr>
+                                    <td><?php echo $no; ?></td>
+                                    <td><?php echo $dp['tgl_order']; ?></td>
+                                    <td><?php echo $dp['customer']; ?></td>
+                                    <td><?php echo number_format($dp['total'], 0); ?></td>
+                                    <td>
+                                        <a href="<?php echo base_url(); ?>orders/edit/<?php echo $dp['id_order']; ?>"
+                                            title="Ubah"><button class="btn btn-info">Ubah</button></a>
 
-                                    <a href="<?php echo base_url(); ?>order/hapus/<?php echo $dp['id_order']; ?>"
-                                        onClick="return confirm('Anda yakin..???');" title="Hapus"><button
-                                            class="btn btn-danger">Hapus</button></a>
-                                </td>
-                            </tr>
+                                        <a href="<?php echo base_url(); ?>order/hapus/<?php echo $dp['id_order']; ?>"
+                                            onClick="return confirm('Anda yakin..???');" title="Hapus"><button
+                                                class="btn btn-danger">Hapus</button></a>
+                                    </td>
+                                </tr>
                             <?php
                                 $no++;
                             }

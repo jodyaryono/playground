@@ -6,17 +6,15 @@
     <?php $this->load->view("admin/komponen/header.php") ?>
     <title>Sistem Arsip</title>
 
-    <!-- Custom styles for this template-->
-    <link href="<?php echo base_url('css/sb-admin-2.css') ?>" rel="stylesheet">
-    <!--  -->
+
 </head>
 
 <body id="page-top">
 
     <!-- Page Wrapper -->
     <div id="wrapper">
-
         <!-- Sidebar -->
+
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
@@ -129,8 +127,37 @@
                     <!-- Begin Page Content -->
                     <div class="container-fluid">
 
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="card" style="width: 18rem;">
+                                    <img src="https://cdn.rri.co.id/berita/Madiun/o/1716547130974-WhatsApp_Image_2024-05-24_at_18.37.26/85a8wrblpz9nx8n.jpeg"
+                                        class="card-img-top" alt="...">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Card title</h5>
+                                        <p class="card-text">Some quick example text to build on the card title and make
+                                            up the bulk of
+                                            the card's content.</p>
+                                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="card" style="width: 18rem;">
+                                    <img src="https://cdn.rri.co.id/berita/Madiun/o/1716547130974-WhatsApp_Image_2024-05-24_at_18.37.26/85a8wrblpz9nx8n.jpeg"
+                                        class="card-img-top" alt="...">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Card title</h5>
+                                        <p class="card-text">Some quick example text to build on the card title and make
+                                            up the bulk of
+                                            the card's content.</p>
+                                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6"></div>
+                        </div>
 
-
+                        <br>
                         <!-- Content Row -->
 
                         <div class="row">
@@ -167,141 +194,141 @@
                                             <img style="width:100%"
                                                 src='<?= base_url("assets/images/playground.webp") ?>'>
                                             <style>
-                                            body {
+                                                body {
 
-                                                background-image: url('<?= base_url("assets/images/playground.webp") ?>');
-                                                background-size: cover;
+                                                    background-image: url('<?= base_url("assets/images/playground.webp") ?>');
+                                                    background-size: cover;
 
-                                            }
-
-
-                                            .tengah {
-                                                padding: 10px;
-
-
-
-
-                                                position: relative;
-                                                margin: auto;
-                                                min-height: 500px;
-                                            }
-
-                                            .satu .jelas1 {
-                                                color: black;
-                                                margin-top: 300px;
-                                                text-align: center;
-
-
-                                            }
-
-                                            .dua .jelas2 {
-                                                color: black;
-                                                margin-top: 300px;
-                                                text-align: center;
-
-                                            }
-
-                                            .tiga .jelas3 {
-                                                color: black;
-                                                margin-top: 300px;
-                                                text-align: center;
-
-                                            }
-
-                                            .tengah-items {
-
-                                                display: -webkit-box;
-                                                display: -ms-flexbox;
-                                                display: flex;
-                                                -webkit-box-pack: center;
-                                                -ms-flex-pack: center;
-                                                justify-content: center;
-                                                -webkit-box-align: center;
-                                                -ms-flex-align: center;
-                                                align-items: center;
-                                                margin-top: 70px;
-
-
-                                            }
-
-                                            @media only screen and (max-width:800px) {
-                                                .tengah-items {
-                                                    -webkit-box-orient: vertical;
-                                                    -webkit-box-direction: normal;
-                                                    -ms-flex-direction: column;
-                                                    flex-direction: column;
                                                 }
 
-                                                .tengah-items p {
-                                                    margin-top: 0 !important;
-                                                    color: white !important;
+
+                                                .tengah {
+                                                    padding: 10px;
+
+
+
+
+                                                    position: relative;
+                                                    margin: auto;
+                                                    min-height: 500px;
+                                                }
+
+                                                .satu .jelas1 {
+                                                    color: black;
+                                                    margin-top: 300px;
+                                                    text-align: center;
+
+
+                                                }
+
+                                                .dua .jelas2 {
+                                                    color: black;
+                                                    margin-top: 300px;
+                                                    text-align: center;
+
+                                                }
+
+                                                .tiga .jelas3 {
+                                                    color: black;
+                                                    margin-top: 300px;
+                                                    text-align: center;
+
+                                                }
+
+                                                .tengah-items {
+
+                                                    display: -webkit-box;
+                                                    display: -ms-flexbox;
+                                                    display: flex;
+                                                    -webkit-box-pack: center;
+                                                    -ms-flex-pack: center;
+                                                    justify-content: center;
+                                                    -webkit-box-align: center;
+                                                    -ms-flex-align: center;
+                                                    align-items: center;
+                                                    margin-top: 70px;
+
+
+                                                }
+
+                                                @media only screen and (max-width:800px) {
+                                                    .tengah-items {
+                                                        -webkit-box-orient: vertical;
+                                                        -webkit-box-direction: normal;
+                                                        -ms-flex-direction: column;
+                                                        flex-direction: column;
+                                                    }
+
+                                                    .tengah-items p {
+                                                        margin-top: 0 !important;
+                                                        color: white !important;
+                                                    }
+
+                                                    .tengah-items>div {
+                                                        margin-right: 0 !important;
+                                                    }
+                                                }
+
+                                                .aktif {
+                                                    text-align: center;
+                                                    font-size: 40px;
+                                                }
+
+                                                .aktif1 {
+                                                    text-align: center;
+                                                    font-size: 20px;
+                                                }
+
+                                                .aktif2 {
+                                                    text-align: center;
+                                                    font-size: 15px;
                                                 }
 
                                                 .tengah-items>div {
-                                                    margin-right: 0 !important;
+                                                    margin-right: 90px;
+                                                    border-radius: 50%;
+                                                    display: -webkit-box;
+                                                    display: -ms-flexbox;
+                                                    display: flex;
+                                                    -webkit-box-pack: center;
+                                                    -ms-flex-pack: center;
+                                                    justify-content: center;
+                                                    -webkit-box-align: center;
+                                                    -ms-flex-align: center;
+                                                    align-items: center;
+                                                    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
                                                 }
-                                            }
 
-                                            .aktif {
-                                                text-align: center;
-                                                font-size: 40px;
-                                            }
+                                                .tengah-items>div:nth-child(3) {
+                                                    margin-right: 0;
+                                                }
 
-                                            .aktif1 {
-                                                text-align: center;
-                                                font-size: 20px;
-                                            }
+                                                .satu {
+                                                    background-color: grey;
+                                                    width: 200px;
+                                                    height: 200px;
+                                                    background-image: url(foto/laptop.jpg);
+                                                    background-size: cover;
+                                                    background-position: center;
+                                                }
 
-                                            .aktif2 {
-                                                text-align: center;
-                                                font-size: 15px;
-                                            }
+                                                .dua {
+                                                    background-color: #eaeaea;
+                                                    width: 200px;
+                                                    height: 200px;
+                                                    background-image: url(foto/seken.jpg);
+                                                    background-size: cover;
+                                                    background-position: center;
+                                                }
 
-                                            .tengah-items>div {
-                                                margin-right: 90px;
-                                                border-radius: 50%;
-                                                display: -webkit-box;
-                                                display: -ms-flexbox;
-                                                display: flex;
-                                                -webkit-box-pack: center;
-                                                -ms-flex-pack: center;
-                                                justify-content: center;
-                                                -webkit-box-align: center;
-                                                -ms-flex-align: center;
-                                                align-items: center;
-                                                box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
-                                            }
-
-                                            .tengah-items>div:nth-child(3) {
-                                                margin-right: 0;
-                                            }
-
-                                            .satu {
-                                                background-color: grey;
-                                                width: 200px;
-                                                height: 200px;
-                                                background-image: url(foto/laptop.jpg);
-                                                background-size: cover;
-                                                background-position: center;
-                                            }
-
-                                            .dua {
-                                                background-color: #eaeaea;
-                                                width: 200px;
-                                                height: 200px;
-                                                background-image: url(foto/seken.jpg);
-                                                background-size: cover;
-                                                background-position: center;
-                                            }
-
-                                            .tiga {
-                                                background-color: grey;
-                                                width: 200px;
-                                                height: 200px;
-                                                background-image: url(foto/service.jpg);
-                                                background-size: cover;
-                                                background-position: center;
-                                            }
+                                                .tiga {
+                                                    background-color: grey;
+                                                    width: 200px;
+                                                    height: 200px;
+                                                    background-image: url(foto/service.jpg);
+                                                    background-size: cover;
+                                                    background-position: center;
+                                                }
                                             </style>
 
                                             <!-- Card Body -->

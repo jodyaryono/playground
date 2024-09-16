@@ -77,32 +77,38 @@ class Produk extends CI_Controller
 		$id_produk = $this->input->post('id_produk');
 		$nama_produk = $this->input->post('nama_produk');
 		$id_kategori = $this->input->post('id_kategori');
-		$tgl_produk = $this->input->post('tgl_produk');
-		//$foto = $this->input->post('foto');
+		$harga = $this->input->post('harga');
 
-		//upload photo
-		$config['max_size'] = 2048;
-		$config['allowed_types'] = "png|jpg|jpeg|gif|pdf";
-		$config['remove_spaces'] = TRUE;
-		$config['overwrite'] = TRUE;
-		$config['upload_path'] = FCPATH . 'file';
+		if (!empty($_FILES['userfile']['name'])) {
+			//upload photo
+			$config['max_size'] = 2048;
+			$config['allowed_types'] = "png|jpg|jpeg|gif|pdf|webp";
+			$config['remove_spaces'] = TRUE;
+			$config['overwrite'] = TRUE;
+			$config['upload_path'] = FCPATH . 'file';
 
-		$this->load->library('upload');
-		$this->upload->initialize($config);
+			$this->load->library('upload');
+			$this->upload->initialize($config);
 
-		//ambil data image
-		$this->upload->do_upload('userfile');
-		$data_image = $this->upload->data('file_name');
-		$location = base_url() . 'file/';
-		$pict = $location . $data_image;
+
+			//ambil data image
+			$this->upload->do_upload('userfile');
+			$data_image = $this->upload->data('file_name');
+			$location = base_url() . 'file/';
+			$pict = $location . $data_image;
+		}
 
 		$data = array(
 			'id_produk' => $id_produk,
 			'nama_produk' => $nama_produk,
 			'id_kategori' => $id_kategori,
-			'tgl_produk' => $tgl_produk,
-			'foto' => $pict
+			'harga' => $harga,
+
 		);
+
+		if (!empty($pict)) {
+			$data['foto'] = $pict;
+		}
 
 		$where = array('id_produk' => $id_produk);
 

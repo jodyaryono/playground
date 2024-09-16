@@ -17,9 +17,9 @@
 
 <style>
 .bg-gradient-primary {
-    background-color: #4e73df;
-    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(10%, #4e73df), to(#224abe));
-    background-image: linear-gradient(180deg, #e74a3b 10%, #224abe 100%);
+    background-color: #87e73b;
+    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(10%, #87e73b), to(#224abe));
+    background-image: linear-gradient(180deg, #3b4be7 10%, #22be7d 100%);
     background-size: cover;
 }
 </style>

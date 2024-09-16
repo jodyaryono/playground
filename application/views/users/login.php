@@ -29,7 +29,7 @@
                         <!-- Nested Row within Card Body -->
                         <div class="row">
                             <div class="col-lg-6 d-none d-lg-block bg-login-image">
-                                <img src="assets/images/index.jpg" height="500" width="500">
+                                <img src="<?= base_url('assets/images/index.jpg') ?>" height="500" width="500">
                             </div>
                             <div class="col-lg-6">
 
@@ -38,7 +38,7 @@
                                         <h1 class="h4 text-gray-900 mb-4">Selamat Datang di Playground!</h1>
                                     </div>
                                     <form class="form-signin" method="POST"
-                                        action="<?php echo base_url() ?>index.php/login">
+                                        action="<?php echo base_url('users/login') ?>">
                                         <div class="form-group">
                                             <input type="text" name="username" class="form-control form-control-user"
                                                 id="exampleInputEmail" aria-describedby="emailHelp"
@@ -58,13 +58,9 @@
                                                     Me</label>
                                             </div>
                                         </div>
-                                        <button class="btn btn-lg btn-primary btn-block" name="btn-login" id="btn-login"
+                                        <button class="btn btn-primary btn-block" name="btn-login" id="btn-login"
                                             type="submit">
                                             LOGIN</button>
-
-
-                                        <a class="h4 text-black-500 mb-2">LSP Informatika</a>
-
                                 </div>
 
 

@@ -7,21 +7,21 @@ class Dashboard extends CI_Controller
 	public function __construct()
 	{
 		parent::__construct();
-		$this->load->model('Admin_model');
+		$this->load->model('User_model');
 	}
 
 	public function index()
 	{
-		if ($this->Admin_model->logged_id()) {
+		if ($this->User_model->logged_id()) {
 			$this->load->view("dashboard");
 		} else {
-			redirect("login");
+			redirect("users");
 		}
 	}
 
 	public function logout()
 	{
 		$this->session->sess_destroy();
-		redirect('login');
+		redirect('users');
 	}
 }

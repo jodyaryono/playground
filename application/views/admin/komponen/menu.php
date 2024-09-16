@@ -22,42 +22,68 @@
          <i class=" fas fa-fw fa-cog"></i>
          <span>Kategori</span></a>
  </li>
- <li class="nav-item">
-     <a class="nav-link" href="<?php echo base_url(); ?>jenis_arsip">
-         <i class=" fas fa-fw fa-envelope"></i>
-         <span>Jenis Arsip</span></a>
- </li>
- <li class="nav-item">
-     <a class="nav-link" href="<?php echo base_url(); ?>users">
-         <i class=" fas fa-fw fa-users"></i>
-         <span>Users</span></a>
- </li>
- <li class="nav-item">
-     <a class="nav-link" href="<?php echo base_url(); ?>users_management">
-         <i class=" fas fa-fw fa-users"></i>
-         <span>User Management</span></a>
- </li>
- <li class="nav-item">
-     <a class="nav-link" href="<?php echo base_url(); ?>produk">
-         <i class=" fas fa-fw fa-users"></i>
-         <span>Produk</span></a>
- </li>
- <li class="nav-item">
-     <a class="nav-link" href="<?php echo base_url(); ?>orders">
-         <i class=" fas fa-fw fa-bars"></i>
-         <span>Order</span></a>
- </li>
- <li class="nav-item">
-     <a class="nav-link" href="<?php echo base_url(); ?>arsip">
-         <i class=" fas fa-fw fa-documents"></i>
-         <span>Arsip</span></a>
- </li>
- <li class="nav-item">
 
-     <a class="nav-link" href="<?php echo base_url(); ?>laporan">
-         <i class=" fas fa-fw fa-folder"></i>
-         <span>Laporan</span></a>
+ <li class="nav-item dropdown">
+     <a class="nav-link dropdown-toggle" href="#" id="arsipDropdown" role="button" data-toggle="dropdown"
+         aria-haspopup="true" aria-expanded="false">
+         <i class="fas fa-fw fa-archive"></i>
+         <span>Sistem Arsip</span>
+     </a>
 
+     <div class="dropdown-menu" aria-labelledby="arsipDropdown">
+         <a class="dropdown-item" href="<?php echo base_url(); ?>jenis_arsip">
+             <i class="fas fa-envelope"></i> Jenis Arsip
+         </a>
+         <a class="dropdown-item" href="<?php echo base_url(); ?>arsip">
+             <i class="fas fa-file"></i> Arsip
+         </a>
+         <a class="dropdown-item" href="<?php echo base_url(); ?>laporan">
+             <i class="fas fa-folder"></i> Laporan
+         </a>
+     </div>
+ </li>
+ <li class="nav-item dropdown">
+     <a class="nav-link dropdown-toggle" href="#" id="kasirDropdown" role="button" data-toggle="dropdown"
+         aria-haspopup="true" aria-expanded="false">
+         <i class="fas fa-fw fa-cash-register"></i>
+         <span>Sistem Order</span>
+     </a>
+
+     <div class="dropdown-menu" aria-labelledby="kasirDropdown">
+         <a class="dropdown-item" href="<?php echo base_url(); ?>produk">
+             <i class="fas fa-box"></i> Produk
+         </a>
+         <a class="dropdown-item" href="<?php echo base_url(); ?>orders">
+             <i class="fas fa-receipt"></i> Order
+         </a>
+     </div>
+ </li>
+
+ <li class="nav-item dropdown">
+     <a class="nav-link dropdown-toggle" href="#" id="usersDropdown" role="button" data-toggle="dropdown"
+         aria-haspopup="true" aria-expanded="false">
+         <i class="fas fa-fw fa-users"></i>
+         <span>Users & Menu</span>
+     </a>
+
+     <div class="dropdown-menu" aria-labelledby="usersDropdown">
+         <a class="dropdown-item" href="<?php echo base_url(); ?>users">
+             <i class="fas fa-user"></i> Users
+         </a>
+         <a class="dropdown-item" href="<?php echo base_url(); ?>roles">
+             <i class="fas fa-user-tag"></i> Roles
+         </a>
+         <a class="dropdown-item" href="<?php echo base_url(); ?>menus">
+             <i class="fas fa-list"></i> Menu
+         </a>
+         <a class="dropdown-item" href="<?php echo base_url(); ?>users_management">
+             <i class="fas fa-user-cog"></i> User Management
+         </a>
+     </div>
+ </li>
+
+
+ <li class="nav-item">
      <!-- Divider -->
      <hr class="sidebar-divider d-none d-md-block">
 

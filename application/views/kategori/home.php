@@ -2,16 +2,16 @@
 <html lang="en">
 
 <head>
-    <?php $this->load->view("admin/komponen/header.php")?>
+    <?php $this->load->view("admin/komponen/header.php") ?>
 </head>
 
 
 <body id="page-top">
-
-    <?php $this->load->view("admin/komponen/navbar.php")?>
+    <?php $this->load->view("admin/komponen/css_saya.php") ?>
+    <?php $this->load->view("admin/komponen/navbar.php") ?>
     <div id="wrapper">
 
-        <?php $this->load->view("admin/komponen/sidebar.php")?>
+        <?php $this->load->view("admin/komponen/sidebar.php") ?>
         <div id="content-wrapper">
 
             <div class="container-fluid">
@@ -20,7 +20,7 @@
                 <div class="col-sm-8 text-left">
 
                     <h2>Data Kategori</h2>
-                    <a href="<?php echo base_url(); ?>kategori/tambah"><button class="btn btn-primary">Tambah
+                    <a href="<?php echo base_url(); ?>kategori/tambah"><button class="btn btn-saya2">Tambah
                             data</button></a>
                     <table class="table">
                         <thead>
@@ -32,14 +32,13 @@
                         </thead>
                         <tbody>
                             <?php
-              $no=1;
-              foreach($kategori->result_array() as $dp)
-              { 
-                ?>
+                            $no = 1;
+                            foreach ($kategori->result_array() as $dp) {
+                            ?>
 
                             <tr>
-                                <td><?php echo $no;?></td>
-                                <td><?php echo $dp['kategori'];?></td>
+                                <td><?php echo $no; ?></td>
+                                <td><?php echo $dp['kategori']; ?></td>
                                 <td>
                                     <a href="<?php echo base_url(); ?>kategori/edit/<?php echo $dp['id_kategori']; ?>"
                                         title="Ubah"><button class="btn btn-info">Ubah</button></a>
@@ -50,9 +49,9 @@
                                 </td>
                             </tr>
                             <?php
-              $no++;
-            }
-            ?>
+                                $no++;
+                            }
+                            ?>
                         </tbody>
                     </table>
                 </div>

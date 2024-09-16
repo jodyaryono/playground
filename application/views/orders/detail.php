@@ -5,12 +5,14 @@
     <?php $this->load->view("admin/komponen/header.php") ?>
 </head>
 
-
 <body id="page-top">
+
     <?php $this->load->view("admin/komponen/javascript.php") ?>
     <?php $this->load->view("admin/komponen/navbar.php") ?>
     <div id="wrapper">
         <?php $this->load->view("admin/komponen/sidebar.php") ?>
+
+        <!-- Entry Modal -->
         <div class="modal fade" id="entryModal" tabindex="-1" role="dialog" aria-labelledby="entryModalLabel"
             aria-hidden="true">
             <div class="modal-dialog" role="document">
@@ -23,7 +25,8 @@
                     </div>
                     <div class="modal-body">
                         <form action="<?php echo base_url(); ?>orders/tambah_edit_detail" method="post">
-                            <input type="hidden" name="id_order" value="<?php echo $header['id_order']; ?>">
+                            <input type="hidden" id="id_order" name="id_order"
+                                value="<?php echo $header['id_order']; ?>">
                             <div class="form-group">
                                 <label for="produk">Produk:</label>
                                 <select class="form-control" id="produk" name="produk" required>
@@ -40,7 +43,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="qty">Total</label>
-                                <p class="form-control" id="total"></p>
+                                <p class="form-control" style="background-color: bisque;" id="total"></p>
                             </div>
                             <button type="submit" class="btn btn-primary">Submit</button>
                         </form>
@@ -48,6 +51,8 @@
                 </div>
             </div>
         </div>
+        <!-- End Dialog -->
+
         <div id="content-wrapper">
 
             <div class="container-fluid">
@@ -91,28 +96,28 @@
                             $no = 1;
                             $total = 0;
                             foreach ($detail as $dp) {
-                                $total += $dp['harga'] * $dp['qty'];
+                                $total += $dp['harga_aktual'] * $dp['qty'];
                             ?>
-                            <tr>
-                                <td><?php echo $no; ?></td>
-                                <td><?php echo $dp['nama_produk']; ?></td>
-                                <td><?php echo number_format($dp['harga'], 0); ?></td>
-                                <td><?php echo number_format($dp['harga_aktual'], 0); ?></td>
-                                <td><?php echo $dp['qty']; ?></td>
-                                <td><?php echo number_format($dp['harga_aktual'] * $dp['qty'], 0); ?></td>
-                                <td>
+                                <tr>
+                                    <td><?php echo $no; ?></td>
+                                    <td><?php echo $dp['nama_produk']; ?></td>
+                                    <td><?php echo number_format($dp['harga'], 0); ?></td>
+                                    <td><?php echo number_format($dp['harga_aktual'], 0); ?></td>
+                                    <td><?php echo $dp['qty']; ?></td>
+                                    <td><?php echo number_format($dp['harga_aktual'] * $dp['qty'], 0); ?></td>
+                                    <td>
 
-                                    <button class="btn btn-primary" data-toggle="modal"
-                                        data-id="<?php echo $dp['id_order_detail']; ?>"
-                                        data-id_produk="<?php echo $dp['id_produk']; ?>"
-                                        data-qty="<?php echo $dp['qty']; ?>"
-                                        data-harga="<?php echo $dp['harga_aktual']; ?>"
-                                        data-target=" #entryModal">Edit</button>
-                                    <a href="<?php echo base_url(); ?>order/hapus/<?php echo $dp['id_order']; ?>"
-                                        onClick="return confirm('Anda yakin..???');" title="Hapus"><button
-                                            class="btn btn-danger">Hapus</button></a>
-                                </td>
-                            </tr>
+                                        <button class="btn btn-primary" data-toggle="modal"
+                                            data-id="<?php echo $dp['id_order_detail']; ?>"
+                                            data-id_produk="<?php echo $dp['id_produk']; ?>"
+                                            data-qty="<?php echo $dp['qty']; ?>"
+                                            data-harga="<?php echo $dp['harga_aktual']; ?>"
+                                            data-target=" #entryModal">Edit</button>
+                                        <a href="<?php echo base_url(); ?>orders/hapus_detail/<?php echo $dp['id_order']; ?>/<?php echo $dp['id_order_detail']; ?>"
+                                            onClick="return confirm('Anda yakin..???');" title="Hapus"><button
+                                                class="btn btn-danger">Hapus</button></a>
+                                    </td>
+                                </tr>
                             <?php
                                 $no++;
                             }
@@ -134,49 +139,54 @@
             </div>
             <!-- /#wrapper -->
             <script>
-            $(document).ready(function() {
-                $('#entryModal').on('show.bs.modal', function(e) {
+                $(document).ready(function() {
+                    console.log('id dari server <?= $id_order ?>')
+                    console.log("id dari client :" + $('#id_order').val())
 
-                    //check if data-id attribute exists
-                    var id = $(e.relatedTarget).data('id');
-                    var id_produk = $(e.relatedTarget).data('id_produk');
-                    var qty = $(e.relatedTarget).data('qty');
-                    var harga = $(e.relatedTarget).data('harga');
+                    $('#entryModal').on('show.bs.modal', function(e) {
 
-                    console.log(id);
-                    //check if id defined then edit
-                    if (id !== undefined) {
-                        $('#entryModalLabel').text('Edit Detail');
-                        $('#produk').val(id_produk);
-                        $('#qty').val(qty);
+                        //check if data-id attribute exists
+                        var id = $(e.relatedTarget).data('id');
+                        var id_produk = $(e.relatedTarget).data('id_produk');
+                        var qty = $(e.relatedTarget).data('qty');
+                        var harga = $(e.relatedTarget).data('harga');
+
+                        console.log(id);
+                        //check if id defined then edit
+                        if (id !== undefined) {
+                            $('#entryModalLabel').text('Edit Detail');
+                            $('#produk').val(id_produk);
+                            $('#qty').val(qty);
+                            $('#harga').val(harga);
+                            $('#total').text(qty * harga);
+                        } else {
+                            //reset form
+                            $('#produk').val('');
+                            $('#harga').val('');
+                            $('#qty').val('1');
+                            $('#total').text('');
+                        }
+                    });
+                    $('#produk').change(function() {
+                        var selectedProduct = $(this).find('option:selected');
+                        var harga = selectedProduct.data(
+                            'harga'
+                        ); // Ensure 'harga' data attribute exists on the option element
                         $('#harga').val(harga);
-                        $('#total').text(qty * harga);
-                    } else {
-                        //reset form
-                        $('#produk').val('');
-                        $('#harga').val('');
-                        $('#qty').val('1');
-                        $('#total').text('');
-                    }
+                        $('#qty').trigger('change');
+                    });
+
+                    $('#qty').change(function() {
+                        var qty = $(this).val();
+                        var harga = $('#harga').val();
+                        var total = qty * harga;
+                        $('#total').text(total);
+                    });
+
+                    $('#harga').change(function() {
+                        $('#qty').trigger('change');
+                    });
                 });
-                $('#produk').change(function() {
-                    var selectedProduct = $(this).find('option:selected');
-                    var harga = selectedProduct.data(
-                        'harga'
-                    ); // Ensure 'harga' data attribute exists on the option element
-                    $('#harga').val(harga);
-                    $('#qty').trigger('change');
-                });
-                $('#qty').change(function() {
-                    var qty = $(this).val();
-                    var harga = $('#harga').val();
-                    var total = qty * harga;
-                    $('#total').text(total);
-                });
-                $('#harga').change(function() {
-                    $('#qty').trigger('change');
-                });
-            });
             </script>
             <a class="scroll-to-top rounded" href="#page-top">
                 <i class="fas fa-angle-up"></i>
@@ -202,7 +212,8 @@
                     </div>
                 </div>
             </div>
-
+        </div>
+    </div>
 </body>
 
 </html>

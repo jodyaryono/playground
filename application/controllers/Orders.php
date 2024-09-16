@@ -41,6 +41,7 @@ class Orders extends CI_Controller
 	{
 
 		$d['detail'] = $this->Orders_model->detail_tampil($id)->result_array();
+		//echo $this->db->last_query();
 		$d['header'] = $this->Orders_model->get_header($id)->row_array();
 		$produk = $this->Produk_model->tampil();
 		$d['opsi_produk'] = "<option value='0'>-Pilih Produk-</option>";
@@ -65,14 +66,25 @@ class Orders extends CI_Controller
 
 		$customer = $this->input->post('customer');
 		$tgl_order = $this->input->post('tgl_order');
+		$id_order = $this->input->post('id_order');
+
 
 		$data = array(
 			'customer' => $customer,
 			'tgl_order' => $tgl_order,
 		);
 
-		$this->Orders_model->simpan($data, 'orders');
-		redirect('orders/detail/' . $this->db->insert_id());
+		if ($id_order > 0) {
+			//edit
+			$where = array('id_order' => $id_order);
+			$this->Orders_model->edit_simpan($where, $data, 'orders');
+		} else {
+			//simpan
+			$this->Orders_model->simpan($data, 'orders');
+			$id_order = $this->db->insert_id();
+		}
+
+		redirect('orders/detail/' . $id_order);
 	}
 
 	public function edit($id_order)
@@ -80,49 +92,15 @@ class Orders extends CI_Controller
 		$where = array('id_order' => $id_order);
 
 		$d['kategori'] = $this->db->query("SELECT * FROM kategori");
+		$d['header'] = $this->Orders_model->get_header($id_order)->row_array();
 
-		$d['order'] = $this->Orders_model->edit_data($where, 'order');
+		$d['order'] = $this->Orders_model->edit_data($where, 'orders');
 
-		$this->load->view('orders/ubah', $d);
+		$d['id_order'] = $id_order;
+
+		$this->load->view('orders/tambah', $d);
 	}
 
-	public function simpan_ubah()
-	{
-		$id_order = $this->input->post('id_order');
-		$nama_order = $this->input->post('nama_order');
-		$id_kategori = $this->input->post('id_kategori');
-		//$foto = $this->input->post('foto');
-
-		//upload photo
-		$config['max_size'] = 2048;
-		$config['allowed_types'] = "png|jpg|jpeg|gif|pdf";
-		$config['remove_spaces'] = TRUE;
-		$config['overwrite'] = TRUE;
-		$config['upload_path'] = FCPATH . 'file';
-
-		$this->load->library('upload');
-		$this->upload->initialize($config);
-
-		//ambil data image
-		$this->upload->do_upload('userfile');
-		$data_image = $this->upload->data('file_name');
-		$location = base_url() . 'file/';
-		$pict = $location . $data_image;
-
-		$data = array(
-			'id_order' => $id_order,
-			'nama_order' => $nama_order,
-			'id_kategori' => $id_kategori,
-			'tgl_order' => $tgl_order,
-			'foto' => $pict
-		);
-
-		$where = array('id_order' => $id_order);
-
-		$this->Orders_model->edit_simpan($where, $data, 'order');
-
-		redirect('orders');
-	}
 
 	public function hapus($id_order)
 	{
@@ -132,5 +110,14 @@ class Orders extends CI_Controller
 		$this->Orders_model->hapus($where, 'order');
 
 		redirect('orders');
+	}
+	public function hapus_detail($id_order, $id_order_detail)
+	{
+
+		$where = array('id_order_detail' => $id_order_detail);
+
+		$this->Orders_model->hapus($where, 'order_details');
+
+		redirect('orders/detail/' . $id_order);
 	}
 }

@@ -45,7 +45,7 @@
                             <tr>
                                 <td><?php echo $no; ?></td>
                                 <td><?php echo $dp['nama_produk']; ?></td>
-                                <td><?php echo $dp['harga']; ?></td>
+                                <td align="right">Rp.<?php echo number_format($dp['harga']); ?></td>
                                 <td><?php echo $dp['created_datetime']; ?></td>
                                 <td>
                                     <a href="<?php echo $dp['foto']; ?>"><img src="<?php echo $dp['foto']; ?>"

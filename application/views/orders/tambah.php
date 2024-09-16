@@ -7,7 +7,7 @@
 
 
 <body id="page-top">
-    <input type="hidden" name="id_order" id="id_order" value="<?= $id_order ?? 0 ?>">
+
     <?php $this->load->view("admin/komponen/navbar.php") ?>
     <div id="wrapper">
 
@@ -22,24 +22,24 @@
                     <h1>Order</h1>
                     <h4>Order Transaksi</h4>
                     <form action="<?php echo base_url() ?>orders/simpan" enctype="multipart/form-data" method="post">
+                        <input type="hidden" name="id_order" id="id_order" value="<?= $id_order ?? 0 ?>">
                         <div class="form-group">
                             <label for="produk">Tanggal:</label>
-                            <input type="date" class="form-control" name="tgl_order" required>
+                            <input type="date" class="form-control" id="tgl_order" name="tgl_order" required>
                         </div>
                         <div class="form-group">
                             <label for="produk">Customer</label>
-                            <input type="text" class="form-control" name="customer" required="">
+                            <input type="text" class="form-control" name="customer" id="customer" required>
                         </div>
-
                         <br>
                         <?php if ($id_order == 0): ?>
-                        <button type="submit" class="btn btn-primary">Simpan Order</button>
+                            <button type="submit" class="btn btn-primary">Simpan/Insert Detail</button>
+                        <?php else: ?>
+                            <button type="submit" class="btn btn-primary">Simpan/Edit Detail</button>
                         <?php endif; ?>
                     </form>
                 </div>
-                <?php if ($id_order > 0): ?>
-                <button type="submit" class="btn btn-primary">Insert Detail</button>
-                <?php endif; ?>
+
 
                 <div class="col-sm-8 text-left">
 
@@ -73,6 +73,21 @@
                     </div>
                 </div>
             </div>
+
+            <script>
+                <?php if ($id_order == 0): ?>
+                    //default tgl_order = today
+                    var today = new Date();
+                    var dd = String(today.getDate()).padStart(2, '0');
+                    var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+                    var yyyy = today.getFullYear();
+                    $('#tgl_order').val(yyyy + '-' + mm + '-' + dd);
+                <?php else: ?>
+                    //get the data
+                    $('#tgl_order').val('<?= $header['tgl_order'] ?>');
+                    $('#customer').val('<?= $header['customer'] ?>');
+                <?php endif; ?>
+            </script>
 </body>
 
 </html>

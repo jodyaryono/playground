@@ -21,6 +21,7 @@ application/composer.lock
 */cache/!index.html
 */cache/!.htaccess
 */config/database.php
+*/writable/*
 
 ## Source map files (local gulp tasks will still produce .map for debug use) ###
 *.map
